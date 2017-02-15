@@ -1,3 +1,4 @@
+package br.com.java8;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -15,25 +16,27 @@ public class OrdenaStrings {
 		Comparator<String> comparador = new ComparadorPorTamanho();
 		// Collections.sort(palavras, comparador); JAVA 7
 		palavras.sort(comparador); // JAVA 8
-		System.out.println(palavras);
 
 		for (String teste : palavras) {
 			System.out.println(teste);
 		}
-
-		// Classe anonima
-		// palavras.forEach(new Consumer<String>() {
-		// @Override
-		// public void accept(String s) {
-		// System.out.println(s);
-		// }
-		// });
-
+		
+		
 		// Java 8 - Lambda
+		
+		// Classe anonima
+				// palavras.forEach(new Consumer<String>() {
+				// @Override
+				// public void accept(String s) {
+				// System.out.println(s);
+				// }
+				// });
+		
 		Consumer<String> impressor = s -> System.out.println(s);
 		palavras.forEach(impressor);
-		palavras.forEach(s -> System.out.println(s));
-
+		palavras.forEach(s -> System.out.println(s));	
+		
+		
 		palavras.sort((s1, s2) -> {
 			if (s1.length() < s2.length())
 				return -1;
@@ -44,8 +47,6 @@ public class OrdenaStrings {
 		});
 
 		palavras.sort((s1, s2) -> Integer.compare(s1.length(), s2.length()));
-		
-		
 
 	}
 
