@@ -17,10 +17,6 @@ public class OrdenaStrings {
 		// Collections.sort(palavras, comparador); JAVA 7
 		palavras.sort(comparador); // JAVA 8
 
-		for (String teste : palavras) {
-			System.out.println(teste);
-		}
-		
 		
 		// Java 8 - Lambda
 		
@@ -31,6 +27,10 @@ public class OrdenaStrings {
 				// System.out.println(s);
 				// }
 				// });
+		
+		for (String teste : palavras) {
+			System.out.println(teste);
+		}
 		
 		Consumer<String> impressor = s -> System.out.println(s);
 		palavras.forEach(impressor);
