@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class OrdenaStrings {
 
@@ -14,8 +15,24 @@ public class OrdenaStrings {
 //		Collections.sort(palavras, comparador); JAVA 7
 		palavras.sort(comparador); // JAVA 8
 		System.out.println(palavras);
+		
+		for (String teste : palavras) {
+			System.out.println(teste);
+		}
+		
+		//Java 8
+		Consumer<String> consumidor = new ImprimeNaLinha();
+		palavras.forEach(consumidor);
 	}
 
+}
+class ImprimeNaLinha implements Consumer<String>{
+
+	@Override
+	public void accept(String s) {
+		System.out.println(s);
+	}
+	
 }
 
 class ComparadorPorTamanho implements Comparator<String> {
