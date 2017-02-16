@@ -42,6 +42,7 @@ public class ExemploStream {
 		cursos.add(new Curso("C", 55));
 
 		cursos.sort(Comparator.comparing(Curso::getAlunos));
+		cursos.sort(Comparator.comparingInt(c -> c.getAlunos()));
 		// cursos.forEach(c -> System.out.println(c.getNome()));
 
 		cursos.stream()
@@ -50,7 +51,7 @@ public class ExemploStream {
 
 		cursos.stream()
 			.filter(c -> c.getAlunos() >= 100)
-			.map(c -> c.getAlunos())
-			.forEach(total -> System.out.println(total));
+			.map(c -> c.getNome());
+//			.forEach(total -> System.out.println(total));
 	}
 }
