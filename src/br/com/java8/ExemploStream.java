@@ -4,7 +4,10 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 class Curso {
 	private String nome;
@@ -53,5 +56,21 @@ public class ExemploStream {
 			.filter(c -> c.getAlunos() >= 100)
 			.map(c -> c.getNome());
 //			.forEach(total -> System.out.println(total));
+		
+		
+		Optional<Curso> optionalCurso = cursos.stream()
+			.filter(c -> c.getAlunos() >= 1000)
+			.findAny();
+		
+		//Não vai gerar nullpointer
+		optionalCurso.ifPresent(c -> System.out.println(c.getNome()));
+		
+		//Retorna uma lista a partir de uma stream e apos ter feito um filtro
+		List<Curso> lista = cursos.stream().filter(c -> c.getAlunos() >= 100)
+			.collect(Collectors.toList());
+		//Retorna um mapa
+		cursos.stream().filter(c -> c.getAlunos() >= 100)
+				.collect(Collectors.toMap(c -> c.getNome(), c->c.getAlunos()))
+				.forEach((nome, alunos) -> System.out.println(nome + " tem " + alunos));
 	}
 }
